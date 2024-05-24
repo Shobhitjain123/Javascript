@@ -1,2 +1,2 @@
 # Javascript
-Learnig Complete JavaScript under this repo
+Learning Complete JavaScript under this repo
