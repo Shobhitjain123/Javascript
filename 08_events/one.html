@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+</head>
+
+<body>
+    <h2>Amazing Pictures</h2>
+    <ul id="images">
+        <li><img height="300px" width="400px" id="animal" src="images/animal-8748794_640.jpg" alt="animal"></li>
+        <li><img height="300px" width="400px" id="books" src="images/books-7838952_640.jpg" alt="books"></li>
+        <li><img height="300px" width="400px" id="wheels" src="images/hot-wheels-8177051_640.jpg" alt="wheels"></li>
+        <li><img height="300px" width="400px" id="leaves" src="images/leaves-8540327_640.jpg" alt="leaves"></li>
+        <li><a id="google" href="https://www.google.co.in/">Google</a></li>
+    </ul>
+    
+
+    <script>
+        // document.getElementById('images').addEventListener('click', function(e){
+        //     console.log("clicked in ul");
+            
+        // }, false)
+
+        // document.getElementById('books').addEventListener('click', function(e){
+        //     console.log("Books Clicked");
+        //     e.stopPropagation();
+            
+        // }, false)
+
+        // document.getElementById('google').addEventListener('click', (e) => {
+        //     console.log("Google Clicked");
+        //     e.preventDefault();
+        //     e.stopPropagation();
+        // }, false)
+
+        document.getElementById('images').addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log(e.target.tagName);
+            if(e.target.tagName === 'LI'){
+                const removeLi = e.target;  
+                removeLi.remove();
+            }else{
+                const removeLi = e.target.parentNode;  
+                removeLi.remove();
+            }
+        }, false)
+
+    </script>
+</body>
+
+</html>
