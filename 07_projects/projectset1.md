@@ -255,3 +255,217 @@ setInterval(function () {
   clock.innerHTML = date.toLocaleTimeString();
 }, 1000);
 ```
+## Project 4 (Guess a Number)
+HTML
+```<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Number Guessing Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body style="background-color:#212121; color:#fff;">
+  <nav>
+    <a href="/" aria-current="page">Home</a>
+  </nav>
+    
+    <div id="wrapper">
+      <h1>Number guessing game</h1>
+    <p>Try and guess a random number between 1 and 100.</p>
+    <p>You have 10 attempts to guess the right number.</p>
+    </br>
+        <form class="form">
+            <label for="guessField" id="guess">Guess a number</label>
+            <input type="text" id="guessField" class="guessField">
+            <input type="submit" id="subt" value="Submit guess" class="guessSubmit">
+        </form>
+
+        <div class="resultParas">
+            <p >Previous Guesses: <span class="guesses"></span></p>
+            <p >Guesses Remaining: <span class="lastResult">10</span></p>
+            <p class="lowOrHi"></p>
+            <p class="gameOver"></p>
+            <h2 class="gameStart"></h2>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+CSS
+```
+html {
+    font-family: sans-serif;
+  }
+  
+  body {
+    width: 300px;
+    max-width: 750px;
+    min-width: 480px;
+    margin: 0 auto;
+    background-color: #212121;
+  }
+  
+  .lastResult {
+    color: white;
+    padding: 7px;
+  }
+  
+  .guesses {
+    color: white;
+    padding: 7px;
+  }
+  
+  button {
+    background-color: #141414;
+    color: #fff;
+    width: 250px;
+    height: 50px;
+    border-radius: 25px;
+    font-size: 30px;
+    border-style: none;
+    margin-top: 30px;
+    /* margin-left: 50px; */
+  }
+  
+  #subt {
+    background-color: #161616;
+    color: #ffffff;
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 20px;
+    border-style: none;
+    margin-top: 20px;
+  }
+  
+  #guessField {
+    display: block;
+    color: #000;
+    width: 250px;
+    height: 50px;
+    font-size: 30px;
+    border-style: none;
+    margin: 10px auto;
+    border: 5px solid #6c6d6d;
+    text-align: center;
+  }
+  
+  #guess {
+    font-size: 55px;
+    /* margin-left: 90px; */
+    margin-top: 120px;
+    color: #fff;
+  }
+  
+  .guesses {
+    background-color: #7a7a7a;
+  }
+  
+  #wrapper {
+    box-sizing: border-box;
+    text-align: center;
+    padding-bottom: 20px;
+    height: 100%; 
+    background-color: #474747;
+    color: #fff;
+    font-size: 25px;
+  }
+  
+  h1 {
+    background-color: #161616;
+    padding: 20px 10px;
+    color: #fff;
+    text-align: center;
+  }
+  
+  p {
+    font-size: 16px;
+    text-align: center;
+  }
+  ```
+  JavaScript
+  ```
+  const randomNum = Math.floor(Math.random() * 100 + 1);
+
+const submit = document.querySelector('#subt');
+const userInput = document.querySelector('#guessField');
+const guesSlot = document.querySelector('.guesses');
+const remaining = document.querySelector('.lastResult');
+const resultSection = document.querySelector('resultParas');
+const lowOrHi = document.querySelector('.lowOrHi');
+const gameOver = document.querySelector('.gameOver');
+const gameRestart = document.querySelector('.gameStart');
+
+let numGuess = 1;
+let p = document.createElement('p');
+
+submit.addEventListener('click', function (e) {
+  e.preventDefault();
+  const guess = userInput.value;
+  console.log(guess);
+  numGuess++;
+  validateGuess(guess);
+});
+
+function validateGuess(guess) {
+  if (isNaN(guess)) {
+    alert('Please Enter a Valid Number');
+  } else if (guess < 1) {
+    alert('Please Enter Number Greater than 1');
+  } else if (guess > 100) {
+    alert('Please enter number smaller than or equal to 100');
+  } else {
+    userInput.value = '';
+    displayGuess(guess);
+    checkGuess(guess);
+  }
+}
+
+function checkGuess(guess) {
+  if (guess < randomNum) {
+    displayMessage(`Guess Number ${guess} is Too Low`);
+  } else if (guess > randomNum) {
+    displayMessage(`Guess Number ${guess} is Too High`);
+  } else {
+    displayMessage('Congrats You guessed it Right!!');
+    endGame();
+  }
+}
+
+function displayMessage(message) {
+  lowOrHi.innerHTML = message;
+}
+
+function displayGuess(guess) {
+  guesSlot.innerHTML += `${guess}  `;
+  if (11 - numGuess) {
+    remaining.innerHTML = 11 - numGuess;
+  } else {
+    remaining.innerHTML = 11 - numGuess;
+    endGame();
+  }
+}
+
+function endGame() {
+  userInput.setAttribute('disabled', '');
+  gameRestart.innerHTML = 'Start New Game';
+  gameOver.innerHTML = `Game Over, Random number was ${randomNum}`;
+  startGame();
+}
+
+function startGame() {
+  gameRestart.addEventListener('click', function () {
+    guesSlot.innerHTML = '';
+    numGuess = 1;
+    remaining.innerHTML = 11 - numGuess;
+    lowOrHi.innerHTML = '';
+    gameOver.innerHTML = '';
+    gameRestart.innerHTML = '';
+    userInput.removeAttribute('disabled');
+  });
+}
+```
