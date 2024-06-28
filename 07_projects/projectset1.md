@@ -469,3 +469,131 @@ function startGame() {
   });
 }
 ```
+
+## Project 5 (Keyboard Key Identifier)
+
+HTML
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Event KeyCodes</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css" />
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid #e7e7e7;
+      }
+      .project {
+        background-color: #1c1c1c;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 100vh;
+      }
+
+      .color {
+        color: aliceblue;
+        display: flex;
+        flex-direction: row;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="/" aria-current="page">Home</a>
+    </nav>
+    <div class="project">
+      <div id="insert">
+        <div class="key">Press the key and watch magic</div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+```
+JavaScript
+```
+const insert = document.getElementById('insert');
+window.addEventListener('keydown', (e) => {
+  insert.innerHTML = `
+    <div>
+      <table>
+        <tr>
+          <th>Key</th>
+          <th>keyCode</th>
+          <th>Code</th>
+        </tr>
+        <tr>
+          <td>${e.key === ' ' ? 'Space' : e.key}</td>
+          <td>${e.keyCode}</td>
+          <td>${e.code}</td>
+        </tr>
+      </table>
+    </div>
+  `;
+});
+```
+## Project 6 (Random colour generator)
+HTML
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Number Guessing Game</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body style="background-color: #212121; color: #fff">
+    <nav>
+      <a href="/" aria-current="page">Home</a>
+    </nav>
+
+    <h1>Start should change the Background color every second</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <script src="script.js"></script>
+  </body>
+</html>
+```
+JavaScript
+```
+let interval;
+
+function randomNum(num) {
+  return Math.floor(Math.random() * (num + 1));
+}
+
+const changeBgcolor = () => {
+  document.querySelector('body').style.backgroundColor = `rgb(${randomNum(
+    255
+  )}, ${randomNum(255)}, ${randomNum(255)})`;
+  console.log('Hiii');
+};
+document.getElementById('start').addEventListener('click', () => {
+  console.log(interval);
+  if (!interval) {
+    interval = setInterval(changeBgcolor, 1000);
+    console.log(interval);
+  }
+});
+
+document.getElementById('stop').addEventListener('click', () => {
+  console.log('Byee');
+  clearInterval(interval);
+  console.log(interval);
+  interval = null;
+  console.log(interval);
+});
+
+```
