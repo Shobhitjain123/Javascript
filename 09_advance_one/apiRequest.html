@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request</title>
+</head>
+
+<body>
+    0 UNSENT Client has been created. open() not called yet.
+    1 OPENED open() has been called.
+    2 HEADERS_RECEIVED send() has been called, and headers and status are available.
+    3 LOADING Downloading; responseText holds partial data.
+    4 DONE The operation is complete.
+
+    <div class="card">
+        <button type="submit">Display</button>
+    </div>
+    <script>
+        let res;
+        const requestURL = 'https://api.github.com/users/Shobhitjain123';
+        const xhr = new XMLHttpRequest();
+        document.querySelector('button').addEventListener('click', () => {
+            xhr.open('GET', requestURL);
+            console.log(xhr.readyState);
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    res = JSON.parse(xhr.responseText);
+                    console.log(xhr.responseText);
+                    let div = document.createElement('div')
+                    div.style.height = "400px"
+                    div.style.width = "400px"
+                    let img = document.createElement('img')
+                    img.style.height = "300px"
+                    img.style.width = "300px"
+                    img.setAttribute('src', res.avatar_url);
+                    let followers = document.createElement('h2')
+                    followers.innerHTML = res.followers;
+                    div.appendChild(img);
+                    div.appendChild(followers);
+                    document.querySelector('.card').appendChild(div);
+                }
+            }
+            xhr.send();
+        })
+    </script>
+</body>
+
+</html>

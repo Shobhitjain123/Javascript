@@ -5,8 +5,8 @@ medicosUser.name = "Sammy"
 medicosUser.age = 23
 
 // console.log(medicosUser)
-console.log(Object.keys(medicosUser))
-console.log(Object.values(medicosUser))
+    // console.log(Object.keys(medicosUser))
+    // console.log(Object.values(medicosUser))
 // console.log(medicosUser.hasOwnProperty("age"))// hasOwnProperty method is used to check if the key property exists in the object
  
 // --------------------------------------------------------------------
@@ -58,9 +58,9 @@ const course = {
     courseLearner: "Shobhit"
 }
 
-// console.log(courseLearner)
+// console.log(courseLearner);
 
 const {courseLearner: learner} = course
 
-// console.log(courseLearner)
-// console.log(learner)
+// console.log(courseLearner);
+// console.log(learner);
