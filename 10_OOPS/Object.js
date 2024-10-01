@@ -1,8 +1,8 @@
-function multiplyBy5(num) {
-    return num * 5
-}
+// function multiplyBy5(num) {
+//     return num * 5
+// }
 
-multiplyBy5.health = 2
+// multiplyBy5.health = 2
 
 // console.log(multiplyBy5(4));
 // console.log(multiplyBy5.health);
@@ -25,8 +25,8 @@ createUser.prototype.printMe = function () {
     console.log(`Price is ${this.score}`)
 }
 
-const chai = new createUser("SJ", 25);
-const tea = new createUser("SJNN", 250);
+const chai =  new createUser("SJ", 25);
+const tea =  new createUser("SJNN", 250);
 
 chai.increment();
 chai.printMe();

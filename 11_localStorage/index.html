@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" class='name'>
+    <input type="number" class='age'>
+    <h2>My Name is <span class='name-tag'></span></h2>
+    <h3>I am <span class='age-tag'></span> years old</h3>
+    <script>
+
+
+        // Setting locastorage values directly as strings 
+
+        const nameTag = document.querySelector('.name-tag')
+        const ageTag = document.querySelector('.age-tag')
+        // // nameTag.innerHTML = localStorage.myName
+        // nameTag.innerHTML = localStorage.getItem('myName')
+        // ageTag.innerHTML = localStorage.getItem('myAge')
+
+        const nameInput = document.querySelector(".name")
+        const ageInput = document.querySelector(".age")
+
+        // nameInput.addEventListener('input', (e) => {
+        //     // localStorage.myName = e.target.value
+        //     localStorage.setItem('myName', e.target.value)
+        //     nameTag.innerHTML = localStorage.myName
+        // })
+
+        // ageInput.addEventListener('input', (e) => {
+        //     // localStorage.myName = e.target.value
+        //     localStorage.setItem('myAge', e.target.value)
+        //     ageTag.innerHTML = localStorage.myAge
+        // })
+
+        // Setting objects as String in local storage
+
+        const myData = JSON.parse(localStorage.getItem('myData')) || {}
+        nameTag.innerHTML = myData.name || ""
+        ageTag.innerHTML = myData.age || ""
+        nameInput.addEventListener("input", (e) => {
+            myData.name = e.target.value
+
+            localStorage.setItem('myData', JSON.stringify(myData))
+            nameTag.innerHTML = e.target.value
+        })
+
+        ageInput.addEventListener("input", (e) => {
+            myData.age = e.target.value
+
+            localStorage.setItem('myData', JSON.stringify(myData))
+            ageTag.innerHTML = e.target.value
+        })
+    </script>
+</body>
+
+</html>

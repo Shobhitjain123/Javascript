@@ -62,7 +62,7 @@
 //     try {
 //         const response = await promiseFive;
 //         console.log(response);
-//     } catch (error) {
+//      } catch (error) {
 //         console.log(error);
 //     }
 // }
@@ -81,13 +81,13 @@
 
 // getAllUsers();
 
-fetch('https://jsonplaceholder.typicode.com/users')
-.then((res) => {
-    return res.json();
-})
-.then((data) => {
-    console.log(data);
-})
-.catch((error) => {
-    console.log(error);
-})
+// fetch('https://jsonplaceholder.typicode.com/users')
+// .then((res) => {
+//     return res.json();
+// })
+// .then((data) => {
+//     console.log(data);
+// })
+// .catch((error) => {
+//     console.log(error);
+// })

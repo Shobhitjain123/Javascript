@@ -23,24 +23,24 @@ const user2 = {
     getUserDetails: userDetails
 }
 
-// console.log(user2.getUserDetails());
-// console.log(user1.getUserDetails());
+console.log(user2.getUserDetails());
+console.log(user1.getUserDetails());
 
 // ---------------------------------------Constructor Functions ----------------------------------------------
 
-function user(username, loginCount, isLoggedIn) {
-    this.username = username;
-    this.loginCount = loginCount;
-    this.isLoggedIn = isLoggedIn;
+// function user(username, loginCount, isLoggedIn) {
+//     this.username = username;
+//     this.loginCount = loginCount;
+//     this.isLoggedIn = isLoggedIn;
 
-    this.greeting = function() {
-        console.log(`welcome ${this.username}`);
-    }
+//     this.greeting = function() {
+//         console.log(`welcome ${this.username}`);
+//     }
 
-    return this
-}
+//     return this
+// }
 
-const userOne = new user("Shobhit", 7, true)
-const userTwo = new user("Ritesh", 8, false)
-console.log("This is user one", userOne);
-console.log("This is user two", userTwo); 
+// const userOne = new user("Shobhit", 7, true)
+// const userTwo = new user("Ritesh", 8, false)
+// console.log("This is user one", userOne);
+// console.log("This is user two", userTwo); 
